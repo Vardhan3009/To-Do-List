@@ -89,8 +89,8 @@ ul li {
     user-select: none;
     cursor: pointer;
     word-wrap: break-word;
-    position: relative;
     border-bottom: 1px solid #ddd;
+    justify-content:space-between   ; /* Keeps space between the task text and the button container */
 }
 
 ul li::before {
@@ -114,24 +114,31 @@ ul li.checked::before {
     background-image: url(images/checked.png);
 }
 
-ul li span {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+/* Edit and Delete Button Styles */
+ul li .button-container {
+    display: flex;
+    gap: 10px; /* Adds space between the Edit and Delete buttons */
+}
+
+ul li .edit-btn,
+ul li .delete-btn {
+    background-color: #4d6ef3; /* Blue color */
+    color: #fff; /* White icon/text for visibility */
+    border: none;
+    border-radius: 50%;
     width: 30px;
     height: 30px;
-    font-size: 20px;
-    color: #555;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
+    font-size: 16px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: background 0.3s;
 }
 
-ul li span:hover {
-    background: #ced7e8;
+ul li .edit-btn:hover,
+ul li .delete-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
 /* Additional styles for the Clear All button */
@@ -165,6 +172,14 @@ ul li span:hover {
         font-size: 14px;
         width: 60%;
     }
+
+    /* Adjust button sizes for medium screens */
+    ul li .edit-btn,
+    ul li .delete-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -172,6 +187,14 @@ ul li span:hover {
         padding: 8px 15px;
         font-size: 12px;
         width: 70%;
+    }
+
+    /* Adjust button sizes for small screens */
+    ul li .edit-btn,
+    ul li .delete-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
     }
 }
 
@@ -195,13 +218,6 @@ ul li span:hover {
         height: 24px;
         width: 24px;
     }
-
-    ul li span {
-        width: 25px;
-        height: 25px;
-        font-size: 18px;
-        line-height: 25px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -222,12 +238,5 @@ ul li span:hover {
     ul li::before {
         height: 20px;
         width: 20px;
-    }
-
-    ul li span {
-        width: 20px;
-        height: 20px;
-        font-size: 16px;
-        line-height: 20px;
     }
 }
